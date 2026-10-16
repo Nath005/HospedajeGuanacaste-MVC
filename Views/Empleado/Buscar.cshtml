@@ -1,0 +1,68 @@
+﻿@model HospedajeGuanacaste.Models.Empleado
+
+@{
+    ViewData["Title"] = "Buscar Empleado";
+}
+
+<h1>Buscar Empleado</h1>
+
+<form asp-action="Buscar" method="post">
+    <div class="form-group">
+        <label>Identificación del empleado</label>
+        <input type="text" name="identificacion" class="form-control" />
+    </div>
+
+    <br />
+
+    <input type="submit" value="Buscar" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>
+
+<br />
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-warning">
+        @ViewBag.Mensaje
+    </div>
+}
+
+@if (Model != null)
+{
+    <h4>Resultado</h4>
+
+    <table class="table">
+        <tr>
+            <th>Identificación</th>
+            <td>@Model.Identificacion</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>@Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</td>
+        </tr>
+        <tr>
+            <th>Fecha de Nacimiento</th>
+            <td>@Model.FechaNacimiento.ToString("dd/MM/yyyy")</td>
+        </tr>
+        <tr>
+            <th>Fecha de Ingreso</th>
+            <td>@Model.FechaIngreso.ToString("dd/MM/yyyy")</td>
+        </tr>
+        <tr>
+            <th>Salario</th>
+            <td>@Model.SalarioMensual</td>
+        </tr>
+        <tr>
+            <th>Categoría</th>
+            <td>@Model.Categoria</td>
+        </tr>
+        <tr>
+            <th>Ubicación</th>
+            <td>@Model.Provincia, @Model.Canton, @Model.Distrito</td>
+        </tr>
+        <tr>
+            <th>Dirección Exacta</th>
+            <td>@Model.DireccionExacta</td>
+        </tr>
+    </table>
+}

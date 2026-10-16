@@ -1,0 +1,36 @@
+﻿@model HospedajeGuanacaste.Models.Empleado
+
+@{
+    ViewData["Title"] = "Eliminar Empleado";
+}
+
+<h1>Eliminar Empleado</h1>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<h4>¿Está seguro que desea eliminar este empleado?</h4>
+
+<div>
+    <p><strong>Identificación:</strong> @Model.Identificacion</p>
+    <p><strong>Nombre:</strong> @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</p>
+    <p><strong>Fecha de Nacimiento:</strong> @Model.FechaNacimiento.ToString("dd/MM/yyyy")</p>
+    <p><strong>Categoría:</strong> @Model.Categoria</p>
+    <p><strong>Salario Mensual:</strong> @Model.SalarioMensual</p>
+    <p><strong>Fecha de Ingreso:</strong> @Model.FechaIngreso.ToString("dd/MM/yyyy")</p>
+    <p><strong>Provincia:</strong> @Model.Provincia</p>
+    <p><strong>Cantón:</strong> @Model.Canton</p>
+    <p><strong>Distrito:</strong> @Model.Distrito</p>
+    <p><strong>Dirección Exacta:</strong> @Model.DireccionExacta</p>
+</div>
+
+<form asp-action="Delete"
+      asp-route-identificacion="@Model.Identificacion"
+      method="post">
+    <input type="submit" value="Eliminar" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>

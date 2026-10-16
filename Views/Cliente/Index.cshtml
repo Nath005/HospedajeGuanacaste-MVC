@@ -1,0 +1,51 @@
+﻿
+@* *Proyecto: Sistema web que permite gestionar la información del emprendimiento Hospedaje Guanacaste
+Autor: Nathalie Enríquez | UNED 2026 *@
+
+
+@model IEnumerable<HospedajeGuanacaste.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h1>Clientes</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Registrar Cliente</a>
+    <a asp-action="Buscar" class="btn btn-secondary">Buscar Cliente</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tipo de Identificación</th>
+            <th>Identificación</th>
+            <th>Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TipoIdentificacion</td>
+                <td>@item.Identificacion</td>
+                <td>@item.Nombre</td>
+                <td>@item.PrimerApellido</td>
+                <td>@item.SegundoApellido</td>
+                <td>@item.FechaNacimiento.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-identificacion="@item.Identificacion">Editar</a> |
+                    <a asp-action="Delete"
+                       asp-route-identificacion="@item.Identificacion">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

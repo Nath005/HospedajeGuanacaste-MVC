@@ -1,0 +1,56 @@
+﻿@model HospedajeGuanacaste.Models.Habitacion
+
+@{
+    ViewData["Title"] = "Buscar Habitación";
+}
+
+<h1>Buscar Habitación</h1>
+
+<form asp-action="Buscar" method="post">
+    <div class="form-group">
+        <label>Número de habitación</label>
+        <input type="number" name="numHabitacion" class="form-control" />
+    </div>
+
+    <br />
+
+    <input type="submit" value="Buscar" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>
+
+<br />
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-warning">
+        @ViewBag.Mensaje
+    </div>
+}
+
+@if (Model != null)
+{
+    <h4>Resultado</h4>
+
+    <table class="table">
+        <tr>
+            <th>Número</th>
+            <td>@Model.NumHabitacion</td>
+        </tr>
+        <tr>
+            <th>Tipo</th>
+            <td>@Model.TipoHabitacion</td>
+        </tr>
+        <tr>
+            <th>Tarifa por Noche</th>
+            <td>@Model.TarifaNoche</td>
+        </tr>
+        <tr>
+            <th>TV Satelital</th>
+            <td>@(Model.TvSatelital ? "Sí" : "No")</td>
+        </tr>
+        <tr>
+            <th>Pendiente Mantenimiento</th>
+            <td>@Model.PendienteMantenimiento</td>
+        </tr>
+    </table>
+}

@@ -1,0 +1,96 @@
+﻿@* /*
+* PROYECTO :Sistema web que permite gestionar la información del emprendimiento Hospedaje Guanacaste
+* Estudiante:Nathalie Enríquez
+* UNED 2026
+*/ *@
+
+@model HospedajeGuanacaste.Models.Reservacion
+
+@{
+    ViewData["Title"] = "Editar Reservación";
+}
+
+<h1>Editar Reservación</h1>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label>Código de Reservación</label>
+        <input asp-for="CodReservacion" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Fecha de Reservación</label>
+        <input asp-for="FechaReservacion"
+               class="form-control"
+               type="date"
+               readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Identificación del Cliente</label>
+        <input asp-for="IdentificacionCliente" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Número de Habitación</label>
+        <input asp-for="NumHabitacion" class="form-control" type="number" />
+    </div>
+
+    <div class="form-group">
+        <label>Fecha de Inicio</label>
+        <input asp-for="FechaIngreso" class="form-control" type="date" />
+    </div>
+
+    <div class="form-group">
+        <label>Fecha de Salida</label>
+        <input asp-for="FechaSalida" class="form-control" type="date" />
+    </div>
+
+    <div class="form-group">
+        <label>Solicitudes Especiales</label>
+        <textarea asp-for="SolicitudesEspeciales"
+                  class="form-control"
+                  maxlength="300"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Porcentaje de Descuento</label>
+        <input asp-for="PorcentajeDescuento"
+               class="form-control"
+               type="number"
+               min="0"
+               max="100" />
+    </div>
+
+    <div class="form-group">
+        <label>Tarifa de la Reservación</label>
+        <input asp-for="TarifaReservacion" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Monto Total</label>
+        <input asp-for="MontoTotal" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Estado</label>
+        <select asp-for="Estado" class="form-control">
+            <option>Reservada</option>
+            <option>Cancelada</option>
+            <option>En proceso</option>
+            <option>Finalizada</option>
+        </select>
+    </div>
+
+    <br />
+
+    <input type="submit" value="Guardar cambios" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>

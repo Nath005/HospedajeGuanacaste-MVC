@@ -1,0 +1,60 @@
+﻿@*/*
+* PROYECTO :Sistema web que permite gestionar la información del emprendimiento Hospedaje Guanacaste
+* Estudiante:Nathalie Enríquez
+* UNED 2026
+*/ *@
+
+@model IEnumerable<HospedajeGuanacaste.Models.Reservacion>
+
+@{
+    ViewData["Title"] = "Reservaciones";
+}
+
+<h1>Reservaciones</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Registrar Reservación</a>
+    <a asp-action="Buscar" class="btn btn-secondary">Buscar Reservación</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Cliente</th>
+            <th>Habitación</th>
+            <th>Fecha Reservación</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Salida</th>
+            <th>Tarifa</th>
+            <th>Solicitudes Especiales</th>
+            <th>Descuento</th>
+            <th>Total</th>
+            <th>Estado</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CodReservacion</td>
+                <td>@item.IdentificacionCliente</td>
+                <td>@item.NumHabitacion</td>
+                <td>@item.FechaReservacion.ToString("dd/MM/yyyy")</td>
+                <td>@item.FechaIngreso.ToString("dd/MM/yyyy")</td>
+                <td>@item.FechaSalida.ToString("dd/MM/yyyy")</td>
+                <td>@item.TarifaReservacion</td>
+                <td>@item.SolicitudesEspeciales</td>
+                <td>@item.PorcentajeDescuento%</td>
+                <td>@item.MontoTotal</td>
+                <td>@item.Estado</td>
+                <td>
+                    <a asp-action="Edit" asp-route-codReservacion="@item.CodReservacion">Editar</a> |
+                    <a asp-action="Delete" asp-route-codReservacion="@item.CodReservacion">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

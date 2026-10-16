@@ -1,0 +1,44 @@
+﻿@model IEnumerable<HospedajeGuanacaste.Models.Habitacion>
+
+@{
+    ViewData["Title"] = "Habitaciones";
+}
+
+<h1>Habitaciones</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Registrar Habitación</a>
+    <a asp-action="Buscar" class="btn btn-secondary">Buscar Habitación</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Número</th>
+            <th>Tipo</th>
+            <th>Tarifa por Noche</th>
+            <th>TV Satelital</th>
+            <th>Pendiente Mantenimiento</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NumHabitacion</td>
+                <td>@item.TipoHabitacion</td>
+                <td>@item.TarifaNoche</td>
+                <td>@(item.TvSatelital ? "Sí" : "No")</td>
+                <td>@item.PendienteMantenimiento</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-numHabitacion="@item.NumHabitacion">Editar</a> |
+                    <a asp-action="Delete"
+                       asp-route-numHabitacion="@item.NumHabitacion">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

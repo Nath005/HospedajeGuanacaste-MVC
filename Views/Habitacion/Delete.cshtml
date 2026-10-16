@@ -1,0 +1,30 @@
+﻿@model HospedajeGuanacaste.Models.Habitacion
+
+@{
+    ViewData["Title"] = "Eliminar Habitación";
+}
+
+<h1>Eliminar Habitación</h1>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<h4>¿Está seguro que desea eliminar esta habitación?</h4>
+
+<div>
+    <p><strong>Número:</strong> @Model.NumHabitacion</p>
+    <p><strong>Tipo:</strong> @Model.TipoHabitacion</p>
+    <p><strong>Tarifa por Noche:</strong> @Model.TarifaNoche</p>
+    <p><strong>TV Satelital:</strong> @(Model.TvSatelital ? "Sí" : "No")</p>
+</div>
+
+<form asp-action="Delete"
+      asp-route-numHabitacion="@Model.NumHabitacion"
+      method="post">
+    <input type="submit" value="Eliminar" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>

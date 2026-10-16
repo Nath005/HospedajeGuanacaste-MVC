@@ -1,0 +1,54 @@
+﻿@model HospedajeGuanacaste.Models.Habitacion
+
+@{
+    ViewData["Title"] = "Registrar Habitación";
+}
+
+<h1>Registrar Habitación</h1>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label>Número de Habitación</label>
+        <input asp-for="NumHabitacion" class="form-control" type="number" />
+    </div>
+
+    <div class="form-group">
+        <label>Tipo de Habitación</label>
+        <select asp-for="TipoHabitacion" class="form-control">
+            <option value="">Seleccione</option>
+            <option>Start Junior</option>
+            <option>Start Vista al Mar</option>
+            <option>Master Start</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Tarifa por Noche</label>
+        <input asp-for="TarifaNoche" class="form-control" type="number" step="0.01" />
+    </div>
+
+    <div class="form-group">
+        <label>TV Satelital</label>
+        <select asp-for="TvSatelital" class="form-control">
+            <option value="true">Sí</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Pendiente de Mantenimiento</label>
+        <textarea asp-for="PendienteMantenimiento" class="form-control"></textarea>
+    </div>
+
+    <br />
+
+    <input type="submit" value="Guardar" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>

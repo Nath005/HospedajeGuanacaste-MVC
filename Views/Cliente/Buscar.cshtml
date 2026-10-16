@@ -1,0 +1,53 @@
+﻿@* *Proyecto: Sistema web que permite gestionar la información del emprendimiento Hospedaje Guanacaste
+Autor: Nathalie Enríquez | UNED 2026 *@
+
+
+@model HospedajeGuanacaste.Models.Cliente
+
+@{
+    ViewData["Title"] = "Buscar Cliente";
+}
+
+<h1>Buscar Cliente</h1>
+
+<form asp-action="Buscar" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label>Identificación del cliente</label>
+        <input type="text" name="identificacion" class="form-control" />
+    </div>
+
+    <br />
+
+    <input type="submit" value="Buscar" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>
+
+<br />
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-warning">
+        @ViewBag.Mensaje
+    </div>
+}
+
+@if (Model != null)
+{
+    <h4>Resultado</h4>
+
+    <table class="table">
+        <tr>
+            <th>Identificación</th>
+            <td>@Model.Identificacion</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>@Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</td>
+        </tr>
+        <tr>
+            <th>Fecha de Nacimiento</th>
+            <td>@Model.FechaNacimiento.ToString("dd/MM/yyyy")</td>
+        </tr>
+    </table>
+}

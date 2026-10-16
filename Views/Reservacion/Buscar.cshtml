@@ -1,0 +1,68 @@
+﻿@model IEnumerable<HospedajeGuanacaste.Models.Reservacion>
+
+@{
+    ViewData["Title"] = "Buscar Reservación";
+}
+
+<h1>Buscar Reservación</h1>
+
+<form asp-action="Buscar" method="post">
+    <div class="form-group">
+        <label>Código de reservación o identificación del cliente</label>
+        <input type="text" name="datoBusqueda" class="form-control" />
+    </div>
+
+    <br />
+
+    <input type="submit" value="Buscar" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>
+
+<br />
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-warning">
+        @ViewBag.Mensaje
+    </div>
+}
+
+@if (Model != null && Model.Any())
+{
+    <h4>Resultado</h4>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Cliente</th>
+                <th>Habitación</th>
+                <th>Fecha Reservación</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Salida</th>
+                <th>Tarifa</th>
+                <th>Descuento</th>
+                <th>Total</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CodReservacion</td>
+                    <td>@item.IdentificacionCliente</td>
+                    <td>@item.NumHabitacion</td>
+                    <td>@item.FechaReservacion.ToString("dd/MM/yyyy")</td>
+                    <td>@item.FechaIngreso.ToString("dd/MM/yyyy")</td>
+                    <td>@item.FechaSalida.ToString("dd/MM/yyyy")</td>
+                    <td>@item.TarifaReservacion</td>
+                    <td>@item.PorcentajeDescuento%</td>
+                    <td>@item.MontoTotal</td>
+                    <td>@item.Estado</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

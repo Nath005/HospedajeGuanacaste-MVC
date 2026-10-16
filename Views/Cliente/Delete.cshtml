@@ -1,0 +1,27 @@
+﻿@model HospedajeGuanacaste.Models.Cliente
+
+@{
+    ViewData["Title"] = "Eliminar Cliente";
+}
+
+<h1>Eliminar Cliente</h1>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<h4>¿Está seguro que desea eliminar este cliente?</h4>
+<div>
+    <p><strong>Identificación:</strong> @Model.Identificacion</p>
+    <p><strong>Nombre:</strong> @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</p>
+    <p><strong>Fecha de Nacimiento:</strong> @Model.FechaNacimiento.ToString("dd/MM/yyyy")</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="identificacion" value="@Model.Identificacion" />
+    <input type="submit" value="Eliminar" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>

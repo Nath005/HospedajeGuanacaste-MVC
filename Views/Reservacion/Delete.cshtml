@@ -1,0 +1,76 @@
+﻿@* /*
+* PROYECTO :Sistema web que permite gestionar la información del emprendimiento Hospedaje Guanacaste
+* Estudiante:Nathalie Enríquez
+* UNED 2026
+*/ *@
+
+@model HospedajeGuanacaste.Models.Reservacion
+
+@{
+    ViewData["Title"] = "Eliminar Reservación";
+}
+
+<h1>Eliminar Reservación</h1>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<h4>¿Está seguro que desea eliminar esta reservación?</h4>
+
+<table class="table">
+    <tr>
+        <th>Código</th>
+        <td>@Model.CodReservacion</td>
+    </tr>
+    <tr>
+        <th>Cliente</th>
+        <td>@Model.IdentificacionCliente</td>
+    </tr>
+    <tr>
+        <th>Habitación</th>
+        <td>@Model.NumHabitacion</td>
+    </tr>
+    <tr>
+        <th>Fecha Reservación</th>
+        <td>@Model.FechaReservacion.ToString("dd/MM/yyyy")</td>
+    </tr>
+    <tr>
+        <th>Fecha Inicio</th>
+        <td>@Model.FechaIngreso.ToString("dd/MM/yyyy")</td>
+    </tr>
+    <tr>
+        <th>Fecha Salida</th>
+        <td>@Model.FechaSalida.ToString("dd/MM/yyyy")</td>
+    </tr>
+    <tr>
+        <th>Solicitudes Especiales</th>
+        <td>@Model.SolicitudesEspeciales</td>
+    </tr>
+    <tr>
+        <th>Tarifa</th>
+        <td>@Model.TarifaReservacion</td>
+    </tr>
+    <tr>
+        <th>Descuento</th>
+        <td>@Model.PorcentajeDescuento%</td>
+    </tr>
+    <tr>
+        <th>Total</th>
+        <td>@Model.MontoTotal</td>
+    </tr>
+    <tr>
+        <th>Estado</th>
+        <td>@Model.Estado</td>
+    </tr>
+</table>
+
+<form asp-action="Delete"
+      asp-route-codReservacion="@Model.CodReservacion"
+      method="post">
+    <input type="submit" value="Eliminar" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<HospedajeGuanacaste.Models.Empleado>
+
+@{
+    ViewData["Title"] = "Empleados";
+}
+
+<h1>Empleados</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Registrar Empleado</a>
+    <a asp-action="Buscar" class="btn btn-secondary">Buscar Empleado</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tipo Identificación</th>
+            <th>Identificación</th>
+            <th>Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Fecha Nacimiento</th>
+            <th>Salario</th>
+            <th>Fecha Ingreso</th>
+            <th>Categoría</th>
+            <th>Provincia</th>
+            <th>Cantón</th>
+            <th>Distrito</th>
+            <th>Dirección Exacta</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TipoIdentificacion</td>
+                <td>@item.Identificacion</td>
+                <td>@item.Nombre</td>
+                <td>@item.PrimerApellido</td>
+                <td>@item.SegundoApellido</td>
+                <td>@item.FechaNacimiento.ToString("dd/MM/yyyy")</td>
+                <td>@item.SalarioMensual</td>
+                <td>@item.FechaIngreso.ToString("dd/MM/yyyy")</td>
+                <td>@item.Categoria</td>
+                <td>@item.Provincia</td>
+                <td>@item.Canton</td>
+                <td>@item.Distrito</td>
+                <td>@item.DireccionExacta</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-identificacion="@item.Identificacion">Editar</a> |
+                    <a asp-action="Delete"
+                       asp-route-identificacion="@item.Identificacion">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

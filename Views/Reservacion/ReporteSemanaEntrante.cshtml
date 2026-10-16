@@ -1,0 +1,62 @@
+﻿@*
+/*
+* PROYECTO :Sistema web que permite gestionar la información del emprendimiento Hospedaje Guanacaste
+* Estudiante:Nathalie Enríquez
+* UNED 2026
+*/
+*@
+
+@model IEnumerable<HospedajeGuanacaste.Models.ReporteReservacion>
+
+@{
+    ViewData["Title"] = "Reporte semanal de reservaciones";
+}
+
+<h1>Reporte de reservaciones de la semana entrante</h1>
+
+@if (Model != null && Model.Any())
+{
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Cliente</th>
+                    <th>Identificación</th>
+                    <th>Habitación</th>
+                    <th>Tipo</th>
+                    <th>Ingreso</th>
+                    <th>Salida</th>
+                    <th>Descuento</th>
+                    <th>Monto total</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var reservacion in Model)
+                {
+                    <tr>
+                        <td>@reservacion.CodReservacion</td>
+                        <td>@reservacion.NombreCliente</td>
+                        <td>@reservacion.IdentificacionCliente</td>
+                        <td>@reservacion.NumHabitacion</td>
+                        <td>@reservacion.TipoHabitacion</td>
+                        <td>@reservacion.FechaIngreso.ToString("dd/MM/yyyy")</td>
+                        <td>@reservacion.FechaSalida.ToString("dd/MM/yyyy")</td>
+                        <td>@reservacion.PorcentajeDescuento %</td>
+                        <td>@reservacion.MontoTotal.ToString("N2")</td>
+                        <td>@reservacion.Estado</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        No existen reservaciones para la semana entrante.
+    </div>
+}
+
+<a asp-action="Index" class="btn btn-secondary">Volver a reservaciones</a>

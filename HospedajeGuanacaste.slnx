@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="HospedajeGuanacaste.API/HospedajeGuanacaste.API.csproj" Id="4ed3dc75-4891-45cc-bb96-786684ece6cf" />
+  <Project Path="HospedajeGuanacaste.Datos/HospedajeGuanacaste.Datos.csproj" Id="b1d18e2c-8a60-420b-9a0d-4fe837f330c3" />
+  <Project Path="HospedajeGuanacaste/HospedajeGuanacaste.csproj" />
+</Solution>

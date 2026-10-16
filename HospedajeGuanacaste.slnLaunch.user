@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Nuevo perfil",
+    "Projects": [
+      {
+        "Path": "HospedajeGuanacaste.API\\HospedajeGuanacaste.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "HospedajeGuanacaste\\HospedajeGuanacaste.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

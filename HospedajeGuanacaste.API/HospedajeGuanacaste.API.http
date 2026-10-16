@@ -1,0 +1,9 @@
+@HospedajeGuanacaste.API_HostAddress = http://localhost:5244
+
+### Listar clientes
+GET {{HospedajeGuanacaste.API_HostAddress}}/api/Clientes
+Accept: application/json
+
+### Reporte de la semana entrante
+GET {{HospedajeGuanacaste.API_HostAddress}}/api/Reservaciones/reporte-semana-entrante
+Accept: application/json
